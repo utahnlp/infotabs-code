@@ -48,19 +48,19 @@ data
 │       ├── annotation-template4.html 				# annotation template example 4 
 │       └── validation-template.html 				# validation template
 │
-├── maindata										# primary infotabs dataset folder
-│   ├── infotabs_dev.tsv 							# development datasplit
-│   ├── infotabs_test_alpha1.tsv 					# test alpha1 datasplit
-│   ├── infotabs_test_alpha2.tsv 					# test alpha2 datasplit
-│   ├── infotabs_test_alpha3.tsv 					# test alpha3 datasplit
-│   └── infotabs_train.tsv 							# training dataset
+├── maindata							# primary infotabs dataset folder
+│   ├── infotabs_dev.tsv 					# development datasplit
+│   ├── infotabs_test_alpha1.tsv 				# test alpha1 datasplit
+│   ├── infotabs_test_alpha2.tsv 				# test alpha2 datasplit
+│   ├── infotabs_test_alpha3.tsv 				# test alpha3 datasplit
+│   └── infotabs_train.tsv 					# training dataset
 │
-├── reasoning 										# reasoning statistic folder
-│   ├── infotabs_dev.tsv 							# reasoning on subset of development datasplit
-│   └── infotabs_test_alpha3.tsv 					# reasoning on subset of alpha3 datasplit
+├── reasoning 							# reasoning statistic folder
+│   ├── infotabs_dev.tsv 					# reasoning on subset of development datasplit
+│   └── infotabs_test_alpha3.tsv 				# reasoning on subset of alpha3 datasplit
 │
-├── tables 											# tables folder
-│   ├── html 										# tables premises in html format
+├── tables 							# tables folder
+│   ├── html 							# tables premises in html format
 │   │   ├── T0.html
 │   │   ├── T1000.html
 │   │   ├── T1001.html
@@ -69,7 +69,7 @@ data
 │   │   ├── T99.html
 │   │   └── T9.html
 │   │
-│   ├── json										# tables premises in json format
+│   ├── json							# tables premises in json format
 │   │   ├── T0.json
 │   │   ├── T1000.json
 │   │   ├── T1001.json
@@ -77,15 +77,15 @@ data
 │   │   ├── T999.json
 │   │   ├── T99.json
 │   │   └── T9.json
-│   └── table_categories.tsv 						# table categories
+│   └── table_categories.tsv 					# table categories
 │   		  
-├── validation 										# validation annotations folder
-│   ├── infotabs_valid_dev.tsv 						# validation annotations develement dataset
+├── validation 							# validation annotations folder
+│   ├── infotabs_valid_dev.tsv 					# validation annotations develement dataset
 │   ├── infotabs_valid_test_alpha1.tsv 				# alpha1 annotations develement datasplit
 │   ├── infotabs_valid_test_alpha2.tsv 				# alpha2 annotations develement datasplit
 │   └── infotabs_valid_test_alpha3.tsv 				# alpha3 annotations develement datasplit
 │
-└── LICENSE, Datasheet, README.md, logo			#license,datasheet,dataset readme, logo files.
+└── LICENSE, Datasheet, README.md, logo				#license,datasheet,dataset readme, logo files.
 
 ```
  
@@ -109,12 +109,12 @@ You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folde
 
 temp/data/
 │ 
-└── parapremise 									# paragraph as premise
-    ├── dev.tsv 									# development datasplit
-    ├── test_alpha1.tsv 							# test alpha1 datasplit
-    ├── test_alpha2.tsv 							# test alpha2 datasplit
-    ├── test_alpha3.tsv 							# test alpha3 datasplit
-    └── train.tsv 									# training datasplit
+└── parapremise 						# paragraph as premise
+    ├── dev.tsv 						# development datasplit
+    ├── test_alpha1.tsv 					# test alpha1 datasplit
+    ├── test_alpha2.tsv 					# test alpha2 datasplit
+    ├── test_alpha3.tsv 					# test alpha3 datasplit
+    └── train.tsv 						# training datasplit
 
 ```
 ### 1.2 Convert to SVM format
@@ -124,8 +124,8 @@ cd ../svm
 mkdir ./../../temp/svmformat
 mkdir ./../../temp/svmformat/hypo
 mkdir ./../../temp/svmformat/union 						
-python hypo.py 						#only hypothesis unigram-bigram tokens as features
-python union.py 					#union of premise and hypothesis unigram-bigram tokens as features
+python hypo.py 					#only hypothesis unigram-bigram tokens as features
+python union.py 				#union of premise and hypothesis unigram-bigram tokens as features
 
 ```
 Your ```temp/svmformat/``` will contain sub-folders for the premise type (hypo, union). For example, 
@@ -133,11 +133,11 @@ Your ```temp/svmformat/``` will contain sub-folders for the premise type (hypo, 
 
 temp/svmformat/union
 │									
-├── dev.txt 									# development datasplit
-├── test_alpha1.txt 							# test alpha1 datasplit
-├── test_alpha2.txt 							# test alpha2 datasplit
-├── test_alpha3.txt 							# test alpha3 datasplit
-└── train.txt 									# training datasplit
+├── dev.txt 							# development datasplit
+├── test_alpha1.txt 						# test alpha1 datasplit
+├── test_alpha2.txt 						# test alpha2 datasplit
+├── test_alpha3.txt 						# test alpha3 datasplit
+└── train.txt 							# training datasplit
 
 ```
 ## 1.3 Training and Prediction
@@ -165,7 +165,7 @@ First extract something out of the json files. Assume the data is downloaded and
 cd scripts
 mkdir ./../../temp
 mkdir ./../../temp/data/
-bash json_to_all.sh 								# comment premise types as needed
+bash json_to_all.sh 						# comment premise types as needed
 
 ```
 You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folders for several premise types. For example, 
@@ -173,12 +173,12 @@ You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folde
 
 temp/data/
 │ 
-└── parapremise 									# paragraph as premise
-    ├── dev.tsv 									# development datasplit
-    ├── test_alpha1.tsv 							# test alpha1 datasplit
-    ├── test_alpha2.tsv 							# test alpha2 datasplit
-    ├── test_alpha3.tsv 							# test alpha3 datasplit
-    └── train.tsv 									# training datasplit
+└── parapremise 						# paragraph as premise
+    ├── dev.tsv 						# development datasplit
+    ├── test_alpha1.tsv 					# test alpha1 datasplit
+    ├── test_alpha2.tsv 					# test alpha2 datasplit
+    ├── test_alpha3.tsv 					# test alpha3 datasplit
+    └── train.tsv 						# training datasplit
 
 ```
 ### 2.2 Vectorizing
@@ -186,7 +186,7 @@ Then batch examples and vectorize them:
 ```
 cd ../roberta
 mkdir ./../../temp/processed 						
-bash preprocess_roberta.sh 							# comment premise types as needed
+bash preprocess_roberta.sh 					# comment premise types as needed
 
 ```
 You would see a ```temp/processed/``` folder. ```temp/processed/``` will contain sub-folders for several premise types. For example, 
@@ -194,12 +194,12 @@ You would see a ```temp/processed/``` folder. ```temp/processed/``` will contain
 
 temp/processed/
 │
-└── parapremise 									# paragraph as premise
-    ├── dev.pkl 									# development datasplit
-    ├── test_alpha1.pkl 							# test alpha1 datasplit
-    ├── test_alpha2.pkl 							# test alpha2 datasplit
-    ├── test_alpha3.pkl 							# test alpha3 datasplit
-    └── train.pkl 									# training datasplit
+└── parapremise 						# paragraph as premise
+    ├── dev.pkl 						# development datasplit
+    ├── test_alpha1.pkl 					# test alpha1 datasplit
+    ├── test_alpha2.pkl 					# test alpha2 datasplit
+    ├── test_alpha3.pkl 					# test alpha3 datasplit
+    └── train.pkl 						# training datasplit
 
 ```
 ## 2.3 Training and Prediction
@@ -236,7 +236,7 @@ important argument details which could be reset as needed for training and predi
 -- save_dir: name the primary models directory appropriately, usually same as the in_dir final directory (only used while training, i.e., model is "train")
 -- nooflabels: set as 3 as three labels entailment, neutral and contradiction)
 -- save_enable: set as 1 to save prediction files as predict_<datsetname>.json in model_dir. json contains accuracy, predicted label and gold label (in the same sequence order as the dataset set tsv in temp/data/)  (only used while prediction, i.e., model is "test")
--- eval-splits: ' '  separated datasplits names [dev, test_alpha1, test_lapha2, test_alpha3] (only used while prediction, i.e., model is "test")
+-- eval-splits: ' '  separated datasplits names [dev, test_alpha1, test_alpha2, test_alpha3] (only used while prediction, i.e., model is "test")
 -- seed: set a particular seed
 -- parallel:  for a single GPU, 1 for multiple GPUs (used when training large data, use the same flag at both predictions and train time)
 
@@ -246,11 +246,11 @@ After training you would see a ```temp/models/``` folder. ```temp/models/``` wil
 
 temp/models/
 │
-└── parapremise 							# paragraph as premise
-    ├── model_<epoch_no>_<dev_accuracy> 	# save models after every prediction
-    ├── scores_<epoch_no>_dev.json  		# development prediction json results
-    ├── scores_<epoch_no>_test.json			# test alpha2 prediction json results
-    └── predict_<split>.json 				# split prediction json results (only available after testing with argument "-- splits" set to 1)
+└── parapremise 						# paragraph as premise
+    ├── model_<epoch_no>_<dev_accuracy> 			# save models after every prediction
+    ├── scores_<epoch_no>_dev.json  				# development prediction json results
+    ├── scores_<epoch_no>_test.json				# test alpha2 prediction json results
+    └── predict_<split>.json 					# prediction json (when predicting with argument "-- save_enable" set to 1)
 
 ```
 
@@ -277,8 +277,8 @@ You would see a ```temp/validation/``` folder created with the following structu
 temp/validation/
 │
 ├── metric_summary.txt 				# summary of all the inter-annotator results, i.e., individual agreements (majority/gold) and the Kappa values
-└── plots 							# plots of percentage of number of gold and majority label agreements matches for 3,4, and 5 annotators agreements
-    ├── dev.png 					# plot for dev splits
+└── plots 					# plots of percentage of number of gold and majority label agreements matches for 3,4, and 5 annotators agreements
+    ├── dev.png 				# plot for dev splits
     ├── test_alpha1.png 			# plot for alpha1 splits
     ├── test_alpha2.png 			# plot for alpha2 splits
     └── test_alpha3.png 			# plot for alpha3 splits
