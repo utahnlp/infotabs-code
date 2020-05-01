@@ -39,8 +39,8 @@ data
 │ 
 ├── annotation_info
 │   ├── annoations_stats
-│   │   ├── creators.tsv 							# amazon mturk annotator statistics (data annotators)
-│   │   └── validation.tsv 							# amazon mturk annotator statistics (data validators)
+│   │   ├── creators.tsv 					# amazon mturk annotator statistics (data annotators)
+│   │   └── validation.tsv 					# amazon mturk annotator statistics (data validators)
 │   └── templates
 │       ├── annotation-template1.html 				# annotation template example 1 
 │       ├── annotation-template2.html 				# annotation template example 2 
