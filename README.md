@@ -1,6 +1,6 @@
 <p align="center"><img width="80%" src="logo.png" /></p>
 
-Implementation of the semi-structured inference model in our ACL 2020 paper: [INFOTABS: Inference on Tables as Semi-structured Data](https://vgupta123.github.io/docs/ACL-GuptaV.InfoTabS.pdf). To explore the dataset online visit [project page](https://infotabs.github.io).
+Implementation of the semi-structured inference model in our [ACL 2020](https://acl2020.org/) paper: [INFOTABS: Inference on Tables as Semi-structured Data](https://vgupta123.github.io/docs/ACL-GuptaV.InfoTabS.pdf). To explore the dataset online visit [project page](https://infotabs.github.io).
 
 ```
 @inproceedings{gupta2020infotabs,
@@ -11,7 +11,7 @@ Implementation of the semi-structured inference model in our ACL 2020 paper: [IN
   }
 ```
 
-Below are the details about the INFOTABS dataset and scripts for reproducing the results reported in the ACL 2020 paper.
+Below are the details about the INFOTABS dataset and scripts for reproducing the results reported in the [ACL 2020](https://acl2020.org/) paper.
 
 ## 0. Prerequisites
 Have the following installed:
@@ -90,7 +90,7 @@ data
 ```
  
 ## 1. Training and Prediction with linerSVM
-```data/maindata/``` and ```data/tables/``` will be the primary datasets to work on here.
+```data/maindata/``` and ```data/tables/``` will be the primary datasets folders to work on here.
 
 ### 1.1 Preprocessing
 Preprocessing is separated into the following steps.
@@ -141,7 +141,7 @@ temp/svmformat/union
 
 ```
 ## 1.3 Training and Prediction
-For training and prediction on the SVM baseline download and install the liblinear library in ```scripts/svm```. Use the appropiate directiory in ```./../../temp/svmformat/``` from either union or hypo for training and prediction. For example,
+For training and prediction on the SVM baseline download and install the [liblinear library] (https://github.com/cjlin1/liblinear) in ```scripts/svm```. Use the appropiate directiory in ```./../../temp/svmformat/``` from either union or hypo for training and prediction. For example,
 ```
 cd liblinear
 ./train -C ./../../temp/svmformat/union/train.txt
@@ -155,7 +155,7 @@ cd liblinear
 ```train.txt.model``` is the train model. ``` output_<split_name>.txt``` is the prediction for the mentioned split.
 
 ## 2. Training and Prediction with RoBERTa
-```data/maindata/``` and ```data/tables/``` will be the primary datasets to work on here.
+```data/maindata/``` and ```data/tables/``` will be the primary datasets folders to work on here.
 
 ### 2.1 Preprocessing
 Preprocessing is separated into the following steps.
@@ -249,7 +249,7 @@ temp/models/
 └── parapremise 						# paragraph as premise
     ├── model_<epoch_no>_<dev_accuracy> 			# save models after every prediction
     ├── scores_<epoch_no>_dev.json  				# development prediction json results
-    ├── scores_<epoch_no>_test.json				# test alpha2 prediction json results
+    ├── scores_<epoch_no>_test.json				# test alpha1 prediction json results
     └── predict_<split>.json 					# prediction json (when predicting with argument "-- save_enable" set to 1)
 
 ```
@@ -264,7 +264,7 @@ For prediction on INFOTABS with SNLI and MNLI datasets train RoBerta models. Do 
 For evaluation on metrics other than accuracy, such as F1-score, use the scikit-learn metrics functions with arguments as "predict" and "gold" lists from the predicted jsons.
 
 ## 3. mturk Validation
-```data/validation/``` will be the primary dataset to work on here.
+```data/validation/``` will be the primary dataset folder to work on here.
 
 ```
 mkdir ./../../temp/validation/
@@ -285,17 +285,17 @@ temp/validation/
 
 ```
 ## 4. Statistics
-```data/maindata/```, ```data/tables/``` and ```data/reasoning/``` will be the primary datasets to work on here.
+```data/maindata/```, ```data/tables/``` and ```data/reasoning/``` will be the primary datasets folders to work on here.
 
 ### 4.1 General Statistics
-```data/maindata/``` and ```data/tables/``` will be the primary datasets to work on here.
+```data/maindata/``` and ```data/tables/``` will be the primary datasets folders to work on here.
 ```
 mkdir ./../../temp/statistic
 python3 data_statistics.py > ./../../temp/statistic/general-statitics.txt			# output general statistics
 
 ```
 ### 4.2 Reasoning Statistics
-```data/reasoning/``` and ```data/tables/``` will be the primary datasets to work on here. 
+```data/reasoning/``` and ```data/tables/``` will be the primary datasets folders to work on here. 
 
 We need to first get predictions on the reasoning subset before running
 
@@ -320,7 +320,7 @@ You will see a new ```./../../temp/models/reasoning/``` with files as ```predict
 
 ```
 mkdir ./../../temp/statistic
-python3 reasoning_statistics.py > ./../../temp/statistic/reasoning-statitics.txt			# output general statistics
+python3 reasoning_statistics.py > ./../../temp/statistic/reasoning-statitics.txt			# output reasoning statistics
 
 ```
 
