@@ -11,7 +11,7 @@ Implementation of the semi-structured inference model in our [ACL 2020](https://
   }
 ```
 
-Below are the details about the INFOTABS dataset and scripts for reproducing the results reported in the [ACL 2020](https://acl2020.org/) paper.
+Below are the details about the [INFOTABS datasets](https://github.com/infotabs/infotabs) and scripts for reproducing the results reported in the [ACL 2020](https://acl2020.org/) paper.
 
 ## 0. Prerequisites
 Have the following installed:
