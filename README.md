@@ -28,7 +28,7 @@ numpy
 liblinear
 ```
 
-Downloaded and unpacked the INFOTABS datasets into ```./data``` in the main ```infotabs``` folder. . 
+Downloaded and unpacked the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
 
 Carefully read the LICENCE and the Datasheet for non-academic usage. 
 
