@@ -1,6 +1,6 @@
 <p align="center"><img width="80%" src="logo.png" /></p>
 
-Implementation of the semi-structured inference model in our ACL 2020 paper: [INFOTABS: Inference on Tables as Semi-structured Data](https://vgupta123.github.io/docs/ACL-GuptaV.InfoTabS.pdf). To explore the dataset online visit ```https://infotabs.github.io ```.
+Implementation of the semi-structured inference model in our ACL 2020 paper: [INFOTABS: Inference on Tables as Semi-structured Data](https://vgupta123.github.io/docs/ACL-GuptaV.InfoTabS.pdf). To explore the dataset online visit [project page](https://infotabs.github.io).
 
 ```
 @inproceedings{gupta2020infotabs,
