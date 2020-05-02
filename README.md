@@ -141,7 +141,7 @@ temp/svmformat/union
 
 ```
 ## 1.3 Training and Prediction
-For training and prediction on the SVM baseline download and install the [liblinear library(https://github.com/cjlin1/liblinear) in ```scripts/svm```. Use the appropiate directiory in ```./../../temp/svmformat/``` from either union or hypo for training and prediction. For example,
+For training and prediction on the SVM baseline download and install the [liblinear library](https://github.com/cjlin1/liblinear) in ```scripts/svm```. Use the appropiate directiory in ```./../../temp/svmformat/``` from either union or hypo for training and prediction. For example,
 ```
 cd liblinear
 ./train -C ./../../temp/svmformat/union/train.txt
