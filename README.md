@@ -327,8 +327,9 @@ python3 reasoning_statistics.py > ./../../temp/statistic/reasoning-statitics.txt
 ## ToDo
 
 ```
-1. Table extractor, table-splitter, table2json code (optional mention than manula cleaning was performed)
-2. Datasheet addition (currently empty sheet)
+1. Table extractor, table-splitter, table2json codes (we manualy clean many jsons)
+2. Datasheet (in the data github directory)
+3. TabAttn code
 
 ```
 
