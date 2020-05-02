@@ -247,7 +247,7 @@ After training you would see a ```temp/models/``` folder. ```temp/models/``` wil
 temp/models/
 │
 └── parapremise 						# paragraph as premise
-    ├── model_<epoch_no>_<dev_accuracy> 			# save models after every prediction
+    ├── model_<epoch_no>_<dev_accuracy> 			# save models after every epoch
     ├── scores_<epoch_no>_dev.json  				# development prediction json results
     ├── scores_<epoch_no>_test.json				# test alpha2 prediction json results
     └── predict_<split>.json 					# prediction json (when predicting with argument "-- save_enable" set to 1)
