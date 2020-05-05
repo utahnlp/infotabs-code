@@ -81,9 +81,9 @@ data
 │   		  
 ├── validation 							# validation annotations folder
 │   ├── infotabs_valid_dev.tsv 					# validation annotations develement dataset
-│   ├── infotabs_valid_test_alpha1.tsv 				# alpha1 annotations develement datasplit
-│   ├── infotabs_valid_test_alpha2.tsv 				# alpha2 annotations develement datasplit
-│   └── infotabs_valid_test_alpha3.tsv 				# alpha3 annotations develement datasplit
+│   ├── infotabs_valid_test_alpha1.tsv 				# validation alpha1 annotations datasplit
+│   ├── infotabs_valid_test_alpha2.tsv 				# validation alpha2 annotations datasplit
+│   └── infotabs_valid_test_alpha3.tsv 				# validation alpha3 annotations datasplit
 │
 └── LICENSE, Datasheet, README.md, logo				#license,datasheet,dataset readme, logo files.
 
