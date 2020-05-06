@@ -89,7 +89,7 @@ data
 
 ```
  
-## 1. Training and Prediction with linerSVM
+## 1. Training and Prediction with linearSVM
 ```data/maindata/``` and ```data/tables/``` will be the primary datasets folders to work on here.
 
 ### 1.1 Preprocessing
