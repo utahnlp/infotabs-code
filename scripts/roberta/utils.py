@@ -4,10 +4,7 @@
 
 import torch
 import time, sys
-from pytorch_transformers import RobertaTokenizer, BertTokenizer
-
-
-
+from transformers import RobertaTokenizer, BertTokenizer
 
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 tokenizer_bert = BertTokenizer.from_pretrained('bert-base-cased')
@@ -35,27 +32,27 @@ def get_BERT_vector(sent1,sent2=None,max_sent1_len=400,max_sent2_len=100,single_
 	# padded tokens for sentence 1
 	attention_mask_sent1 = [1]*(max_sent1_len+2)
 
-	sent1_encoding = tokenizer.encode("<s>" + sent1)
+	sent1_encoding = tokenizer.encode("<s>" + sent1,add_special_tokens=False)
 	
 	_truncate_seq_pair(sent1_encoding,max_sent1_len+1)
 	
 	attention_mask_sent1[len(sent1_encoding):max_sent1_len+1] = [0]*(max_sent1_len-len(sent1_encoding)+1)
-	sent1_encoding.extend([tokenizer.encode("<pad>")[0]]*(max_sent1_len-len(sent1_encoding)+1)) 
-	sent1_encoding.extend(tokenizer.encode("</s>"))
+	sent1_encoding.extend([tokenizer.encode("<pad>",add_special_tokens=False)[0]]*(max_sent1_len-len(sent1_encoding)+1)) 
+	sent1_encoding.extend(tokenizer.encode("</s>",add_special_tokens=False))
 
 	# Preparing attention mask so no attention is given tokens
 	# padded tokens for sentence 2
 	if not single_sentence:	
 		attention_mask_sent2 = [1]*(max_sent2_len+2)
 
-		sent2_encoding = tokenizer.encode("</s>"+sent2)
+		sent2_encoding = tokenizer.encode("</s>"+sent2, add_special_tokens=False)
 
 		attention_mask_sent2[len(sent2_encoding):max_sent2_len+1] = [0]*(max_sent2_len-len(sent2_encoding)+1)
-		sent2_encoding.extend([tokenizer.encode("<pad>")[0]]*(max_sent2_len-len(sent2_encoding)+1))
-		sent2_encoding.extend(tokenizer.encode("</s>"))
+		sent2_encoding.extend([tokenizer.encode("<pad>",add_special_tokens=False)[0]]*(max_sent2_len-len(sent2_encoding)+1))
+		sent2_encoding.extend(tokenizer.encode("</s>",add_special_tokens=False))
 	else:
 		attention_mask_sent2 = [0]*(max_sent2_len+2)
-		sent2_encoding = [tokenizer.encode("<pad>")[0]]*(max_sent2_len+2)
+		sent2_encoding = [tokenizer.encode("<pad>",add_special_tokens=False)[0]]*(max_sent2_len+2)
 
 		
 
@@ -85,27 +82,27 @@ def get_BERTbase_vector(sent1,sent2=None,max_sent1_len=400,max_sent2_len=100,sin
 	# padded tokens for sentence 1
 	attention_mask_sent1 = [1]*(max_sent1_len+2)
 
-	sent1_encoding = tokenizer_bert.encode("[CLS] " + sent1)
+	sent1_encoding = tokenizer_bert.encode("[CLS] " + sent1, add_special_tokens=False)
 	
 	_truncate_seq_pair(sent1_encoding,max_sent1_len+1)
 	
 	attention_mask_sent1[len(sent1_encoding):max_sent1_len+1] = [0]*(max_sent1_len-len(sent1_encoding)+1)
-	sent1_encoding.extend([tokenizer_bert.encode("[PAD]")[0]]*(max_sent1_len-len(sent1_encoding)+1)) 
-	sent1_encoding.extend(tokenizer_bert.encode("[SEP]"))
+	sent1_encoding.extend([tokenizer_bert.encode("[PAD]",add_special_tokens=False)[0]]*(max_sent1_len-len(sent1_encoding)+1)) 
+	sent1_encoding.extend(tokenizer_bert.encode("[SEP]",add_special_tokens=False))
 
 	# Preparing attention mask so no attention is given tokens
 	# padded tokens for sentence 2
 	if not single_sentence:	
 		attention_mask_sent2 = [1]*(max_sent2_len+1)
 
-		sent2_encoding = tokenizer_bert.encode(sent2)
+		sent2_encoding = tokenizer_bert.encode(sent2,add_special_tokens=False)
 
 		attention_mask_sent2[len(sent2_encoding):max_sent2_len] = [0]*(max_sent2_len-len(sent2_encoding))
-		sent2_encoding.extend([tokenizer_bert.encode("[PAD]")[0]]*(max_sent2_len-len(sent2_encoding)))
-		sent2_encoding.extend(tokenizer_bert.encode("[SEP]"))
+		sent2_encoding.extend([tokenizer_bert.encode("[PAD]",add_special_tokens=False)[0]]*(max_sent2_len-len(sent2_encoding)))
+		sent2_encoding.extend(tokenizer_bert.encode("[SEP]",add_special_tokens=False))
 	else:
 		attention_mask_sent2 = [0]*(max_sent2_len+1)
-		sent2_encoding = [tokenizer_bert.encode("[PAD]")[0]]*(max_sent2_len+1)
+		sent2_encoding = [tokenizer_bert.encode("[PAD]",add_special_tokens=False)[0]]*(max_sent2_len+1)
 
 		
 
