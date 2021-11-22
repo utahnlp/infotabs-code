@@ -37,7 +37,7 @@ numpy
 liblinear
 ```
 
-Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git`
+Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git` </br>
 Download and unpack the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
 
 Carefully read the LICENCE and the Datasheet for non-academic usage. 
