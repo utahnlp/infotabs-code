@@ -23,12 +23,12 @@ Implementation of the semi-structured inference model in our [ACL 2020](https://
 Below are the details about the [INFOTABS datasets](https://github.com/infotabs/infotabs) and scripts for reproducing the results reported in the [ACL 2020](https://acl2020.org/) paper.
 
 ## 0. Prerequisites
-The code requires `python 3.6+` </br>
+The code requires `python 3.6+` <\br>
 
-Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git` <\br>
+Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git` 
 
-Install requirements by typing the following command-</br>
-```pip install -r requirements.txt``` </br>
+Install requirements by typing the following command-
+```pip install -r requirements.txt``` 
 
 
 Download and unpack the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
