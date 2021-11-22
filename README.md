@@ -37,11 +37,12 @@ numpy
 liblinear
 ```
 
-Downloaded and unpacked the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
+Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git`
+Download and unpack the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
 
 Carefully read the LICENCE and the Datasheet for non-academic usage. 
 
-After downloading, you have multiple sub-folders with several csv/tsv/html files. Each csv/tsv file in the sub-folders has 1st rows as a header:
+After downloading, you'll have multiple sub-folders with several csv/tsv/html files. Each csv/tsv file in the sub-folders have 1st rows as a header:
 
 ```
 data
