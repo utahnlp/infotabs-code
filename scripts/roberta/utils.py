@@ -1,5 +1,6 @@
 ##########################
 # Utility functions      #
+# THIS FILE IS OBSOLETE  #
 ##########################
 
 import torch
