@@ -107,7 +107,7 @@ Preprocessing is separated into the following steps.
 
 First extract something out of the json files. Assume the data is downloaded and unpacked into ```data/maindata/```
 ```
-cd scripts
+cd scripts/preprocess/
 mkdir ./../../temp
 mkdir ./../../temp/data/
 mkdir ./../../temp/data/parapremise
@@ -172,7 +172,7 @@ Preprocessing is separated into the following steps.
 
 First extract something out of the json files. Assume the data is downloaded and unpacked into ```data/maindata/```
 ```
-cd scripts
+cd scripts/preprocess/
 mkdir ./../../temp
 mkdir ./../../temp/data/
 bash json_to_all.sh 						# comment premise types as needed
