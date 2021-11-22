@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import random
-from pytorch_transformers import RobertaTokenizer, RobertaForSequenceClassification, RobertaModel, BertModel
+from transformers import RobertaTokenizer, RobertaForSequenceClassification, RobertaModel, BertModel
 
 def is_date(string):
 	match = re.search('\d{4}-\d{2}-\d{2}', string)

@@ -4,10 +4,14 @@
 #
 #    pip-compile requirements.ini
 #
+beautifulsoup4==4.10.0
+    # via bs4
 blis==0.7.5
     # via
     #   spacy
     #   thinc
+bs4==0.0.1
+    # via -r requirements.ini
 catalogue==2.0.6
     # via
     #   spacy
@@ -54,6 +58,8 @@ importlib-metadata==4.8.2
     #   click
     #   huggingface-hub
     #   transformers
+inflect==2.1.0
+    # via -r requirements.ini
 jinja2==3.0.3
     # via spacy
 joblib==1.1.0
@@ -78,6 +84,8 @@ numpy==1.19.5
     #   -r requirements.ini
     #   blis
     #   gensim
+    #   pandas
+    #   pyemd
     #   scipy
     #   spacy
     #   thinc
@@ -87,6 +95,8 @@ packaging==21.3
     #   huggingface-hub
     #   spacy
     #   transformers
+pandas==1.1.5
+    # via -r requirements.ini
 pathy==0.6.1
     # via spacy
 preshed==3.0.6
@@ -97,8 +107,14 @@ pydantic==1.8.2
     # via
     #   spacy
     #   thinc
+pyemd==0.5.1
+    # via -r requirements.ini
 pyparsing==3.0.6
     # via packaging
+python-dateutil==2.8.2
+    # via pandas
+pytz==2021.3
+    # via pandas
 pyyaml==6.0
     # via
     #   huggingface-hub
@@ -120,11 +136,15 @@ scipy==1.5.4
     #   gensim
     #   liblinear
 six==1.16.0
-    # via sacremoses
+    # via
+    #   python-dateutil
+    #   sacremoses
 smart-open==5.2.1
     # via
     #   gensim
     #   pathy
+soupsieve==2.3.1
+    # via beautifulsoup4
 spacy==3.2.0
     # via -r requirements.ini
 spacy-legacy==3.0.8
@@ -170,6 +190,8 @@ wasabi==0.8.2
     #   spacy
     #   spacy-loggers
     #   thinc
+wget==3.2
+    # via -r requirements.ini
 zipp==3.6.0
     # via
     #   catalogue

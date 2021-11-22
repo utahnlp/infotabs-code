@@ -23,21 +23,14 @@ Implementation of the semi-structured inference model in our [ACL 2020](https://
 Below are the details about the [INFOTABS datasets](https://github.com/infotabs/infotabs) and scripts for reproducing the results reported in the [ACL 2020](https://acl2020.org/) paper.
 
 ## 0. Prerequisites
-Have the following installed:
-```
-python 3.6+
-pytorch 1.2.0
-huggingface transformers
-spacy 2.0.11 with en model
-nltk with punkt, stopwords
-json
-collections
-gensim
-numpy
-liblinear
-```
+The code requires `python 3.6+` </br>
 
 Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git` <\br>
+
+Install requirements by typing the following command-</br>
+```pip install -r requirements.txt``` </br>
+
+
 Download and unpack the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
 
 Carefully read the LICENCE and the Datasheet for non-academic usage. 
@@ -178,7 +171,7 @@ mkdir ./../../temp/data/
 bash json_to_all.sh 						# comment premise types as needed
 
 ```
-You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folders for several premise types. For example, 
+This might take a few minutes. You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folders for several premise types. For example, 
 ```
 
 temp/data/
