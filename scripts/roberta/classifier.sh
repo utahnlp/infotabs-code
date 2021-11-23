@@ -3,7 +3,7 @@ python3 classifier.py \
 	--epochs 10 \
 	--batch_size 8 \
 	--in_dir "./../../temp/processed/parapremise/" \
-	--embed_size 1024 \
+	--model_type "roberta-base" \
 	--model_dir "./../../temp/models/parapremise/" \
 	--model_name "" \
 	--save_dir "./../../temp/models/" \
