@@ -112,67 +112,67 @@ def train(args):
     if not os.path.isdir(args['save_dir']+args['save_folder']):
         os.mkdir(args['save_dir']+args['save_folder'])
         
-        print("{} train data loaded".format(len(train_data['encodings'])))
-        print("{} dev data loaded".format(len(dev_data['encodings'])))
-        print("{} test data loaded".format(len(test_data['encodings'])))
+    print("{} train data loaded".format(len(train_data['encodings'])))
+    print("{} dev data loaded".format(len(dev_data['encodings'])))
+    print("{} test data loaded".format(len(test_data['encodings'])))
         
-        train_data_file.close()
-        dev_data_file.close()
-        test_data_file.close()
+    train_data_file.close()
+    dev_data_file.close()
+    test_data_file.close()
         
-        # Separating the data fields
-        train_enc = torch.tensor(train_data['encodings']).cuda()
-        train_attention_mask = torch.tensor(train_data['attention_mask']).cuda()
-        train_segs = torch.tensor(train_data['segments']).cuda()
-        train_labs = torch.tensor(train_data['labels']).cuda()
-        train_ids = torch.tensor(train_data['uid']).cuda()
+    # Separating the data fields
+    train_enc = torch.tensor(train_data['encodings']).cuda()
+    train_attention_mask = torch.tensor(train_data['attention_mask']).cuda()
+    train_segs = torch.tensor(train_data['segments']).cuda()
+    train_labs = torch.tensor(train_data['labels']).cuda()
+    train_ids = torch.tensor(train_data['uid']).cuda()
 
 
-        # Intialize Models
-        model = AutoModel.from_pretrained(args['model_type']).cuda()
-        args['embed_size'] = model.config.hidden_size
-        classifier = FeedForward(args['embed_size'],int(args['embed_size']/2),args['nooflabels']).cuda()
+    # Intialize Models
+    model = AutoModel.from_pretrained(args['model_type']).cuda()
+    args['embed_size'] = model.config.hidden_size
+    classifier = FeedForward(args['embed_size'],int(args['embed_size']/2),args['nooflabels']).cuda()
 
-        # Creating the training dataloaders
-        dataset = TensorDataset(train_enc,train_attention_mask,train_segs,train_labs,train_ids)
-        loader = DataLoader(dataset, batch_size=args['batch_size'])
+    # Creating the training dataloaders
+    dataset = TensorDataset(train_enc,train_attention_mask,train_segs,train_labs,train_ids)
+    loader = DataLoader(dataset, batch_size=args['batch_size'])
 
-	# Intialize the optimizer and loss functions
-        params = list(model.parameters()) + list(classifier.parameters())
-        optimizer = optim.Adagrad(params, lr=0.0001)
-        loss_fn = nn.CrossEntropyLoss()
+    # Intialize the optimizer and loss functions
+    params = list(model.parameters()) + list(classifier.parameters())
+    optimizer = optim.Adagrad(params, lr=0.0001)
+    loss_fn = nn.CrossEntropyLoss()
         
-        for ep in range(args['epochs']):
-            epoch_loss=0
-            start = time.time()
-            model.train()
-            # Iterate over batches
-            for batch_ndx,(enc, mask, seg, gold,ids) in enumerate(tqdm(loader)):
-                batch_loss = 0
-                optimizer.zero_grad()
-                # Forward-pass
-                outputs = model(enc,attention_mask = mask, token_type_ids=seg)
-                predictions = classifier(outputs[1])
-                # Loss calculation and weight update
-                out_loss = loss_fn(predictions,gold)
-                out_loss.backward()
-                optimizer.step()
+    for ep in range(args['epochs']):
+        epoch_loss=0
+        start = time.time()
+        model.train()
+        # Iterate over batches
+        for batch_ndx,(enc, mask, seg, gold,ids) in enumerate(tqdm(loader)):
+            batch_loss = 0
+            optimizer.zero_grad()
+            # Forward-pass
+            outputs = model(enc,attention_mask = mask, token_type_ids=seg)
+            predictions = classifier(outputs[1])
+            # Loss calculation and weight update
+            out_loss = loss_fn(predictions,gold)
+            out_loss.backward()
+            optimizer.step()
                 
-                batch_loss += out_loss.item()
-                epoch_loss+=batch_loss
+        batch_loss += out_loss.item()
+        epoch_loss+=batch_loss
                 
-            normalized_epoch_loss = epoch_loss/(len(loader))
-            print("Epoch {}".format(ep+1))
-            print("Epoch loss: {} ".format(normalized_epoch_loss))
+        normalized_epoch_loss = epoch_loss/(len(loader))
+        print("Epoch {}".format(ep+1))
+        print("Epoch loss: {} ".format(normalized_epoch_loss))
 
-            # Evaluate on the dev and test sets
-            dev_acc, dev_gold, dev_pred = test(model,classifier,dev_data)
-            test_acc, test_gold, test_pred = test(model,classifier,test_data)
-            end = time.time()
-            print("Dev Accuracy: {}".format(dev_acc))
-            print("Time taken: {} seconds\n".format(end-start))
-            # Save model
-            torch.save({
+        # Evaluate on the dev and test sets
+        dev_acc, dev_gold, dev_pred = test(model,classifier,dev_data)
+        test_acc, test_gold, test_pred = test(model,classifier,test_data)
+        end = time.time()
+        print("Dev Accuracy: {}".format(dev_acc))
+        print("Time taken: {} seconds\n".format(end-start))
+        # Save model
+        torch.save({
                     'epoch': ep+1,
                     'model_state_dict': model.state_dict(),
                     'classifier_state_dict': classifier.state_dict(),
@@ -180,14 +180,14 @@ def train(args):
                     'dev_accuracy': dev_acc}, 
                     args["save_dir"]+args["save_folder"]+"model_"+str(ep+1)+"_"+str(dev_acc))
             
-            dev_results = {"accuracy": dev_acc, "gold":dev_gold, "pred": dev_pred}
-            test_results={"accuracy": test_acc, "gold":test_gold, "pred": test_pred}	
+        dev_results = {"accuracy": dev_acc, "gold":dev_gold, "pred": dev_pred}
+        test_results={"accuracy": test_acc, "gold":test_gold, "pred": test_pred}	
             
-            with open(args["save_dir"]+args["save_folder"]+"scores_"+str(ep+1)+"_dev.json", 'w') as fp:
-                json.dump(dev_results, fp)
+        with open(args["save_dir"]+args["save_folder"]+"scores_"+str(ep+1)+"_dev.json", 'w') as fp:
+            json.dump(dev_results, fp)
                 
-            with open(args["save_dir"]+args["save_folder"]+"scores_"+str(ep+1)+"_test.json", 'w') as fp:
-                json.dump(test_results, fp)
+        with open(args["save_dir"]+args["save_folder"]+"scores_"+str(ep+1)+"_test.json", 'w') as fp:
+            json.dump(test_results, fp)
 
 
 
