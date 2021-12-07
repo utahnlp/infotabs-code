@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import wget
-from pytorch_transformers import RobertaTokenizer, RobertaForSequenceClassification, RobertaModel, BertModel
+from transformers import RobertaTokenizer, RobertaForSequenceClassification, RobertaModel, BertModel
 from gensim.models import KeyedVectors
 # # Import and download stopwords from NLTK.
 from nltk.corpus import stopwords

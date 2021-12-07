@@ -23,21 +23,14 @@ Implementation of the semi-structured inference model in our [ACL 2020](https://
 Below are the details about the [INFOTABS datasets](https://github.com/infotabs/infotabs) and scripts for reproducing the results reported in the [ACL 2020](https://acl2020.org/) paper.
 
 ## 0. Prerequisites
-Have the following installed:
-```
-python 3.6+
-pytorch 1.2.0
-huggingface transformers
-spacy 2.0.11 with en model
-nltk with punkt, stopwords
-json
-collections
-gensim
-numpy
-liblinear
-```
+The code requires `python 3.6+` <\br>
 
-Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git` </br>
+Clone this repository on your machine - `git clone https://github.com/utahnlp/infotabs-code.git` 
+
+Install requirements by typing the following command-
+```pip install -r requirements.txt``` 
+
+
 Download and unpack the [INFOTABS datasets](https://github.com/infotabs/infotabs) into ```./data``` in the main ```infotabs-code``` folder. 
 
 Carefully read the LICENCE and the Datasheet for non-academic usage. 
@@ -178,7 +171,7 @@ mkdir ./../../temp/data/
 bash json_to_all.sh 						# comment premise types as needed
 
 ```
-You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folders for several premise types. For example, 
+This might take a few minutes. You would see a ```temp/data/``` folder. ```temp/data/``` will contain sub-folders for several premise types. For example, 
 ```
 
 temp/data/
@@ -213,7 +206,7 @@ temp/processed/
 
 ```
 ## 2.3 Training and Prediction
-For training and prediction on the RoBERTa baseline look at the ```.\scripts\roberta\classifier.sh```:
+For training and prediction on the RoBERTa baseline look at ```.\scripts\roberta\classifier.sh```:
 ```
 example argument in train_classifier
 
@@ -222,7 +215,7 @@ python3 classifier.py \
 	--epochs 10 \
 	--batch_size 8 \
 	--in_dir "./../../temp/processed/parapremise/" \
-	--embed_size 1024 \
+	--model_type "roberta-large" \
 	--model_dir "./../../temp/models/parapremise1/" \
 	--model_name "model_6_0.7683333333333333" \
 	--save_dir "./../../temp/models/" \
@@ -239,7 +232,7 @@ important argument details which could be reset as needed for training and predi
 -- epochs: set training epochs number (only used while training, i.e., model is "train")
 -- batch_size: set batch size for training (only used while training)
 -- in_dir: set as preprocessed directory name, i.e., a folder named in temp/processed/ . Use this for setting the appropriate premise type. (only used while training, i.e., model is "train") 
--- embed_size: set embedding size, i.e., (768/1024). Use 768 for Bert-small and 1024 for Bert-Large.
+-- model_type: A string which determines which model will be used for training/evaluating. The value should be one of the classes mentioned on the Huggingface transformers website - https://huggingface.co/transformers/pretrained_models.html
 -- model_dir: use the model directory containing the train model (only used while prediction, i.e., model is "test")
 -- model_name: model finename usually is in format 'model_<batch_number>_<dev_accuracy>' (only used while prediction, i.e., model is "test")
 -- save_folder: name the primary models directory appropriately as ./../.../temp/models/ (only used while training i.e., model is "train")
